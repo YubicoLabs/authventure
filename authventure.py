@@ -157,7 +157,7 @@ class House(Room):
                     "covered with strange markings."
                 )
                 for serial in self._serials:
-                    output(f"One YubiKey is maked with the number {serial}.")
+                    output(f"One YubiKey is marked with the number {serial}.")
         else:
             super().look(what)
 
@@ -469,7 +469,7 @@ class Adventicature(cmd.Cmd):
     def do_inventory(self, arg):
         serial = self.state.get("yubikey", None)
         if serial:
-            output(f"You have a YubiKey maked with the number {serial}.")
+            output(f"You have a YubiKey marked with the number {serial}.")
         else:
             output("Your pockets are empty, except for some lint.")
 
