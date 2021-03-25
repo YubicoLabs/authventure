@@ -1,0 +1,34 @@
+name: macOS
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install swig
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: PyInstaller
+        run: |
+          pip install pyinstaller
+          pyinstaller authventure.spec
+
+      - name: Upload build
+        uses: actions/upload-artifact@v1
+        with:
+          name: yubico-authventure-macos
+          path: dist
