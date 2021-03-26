@@ -290,13 +290,16 @@ class Man(Room):
         output(super().get_description())
 
         if self._oath.locked:
+            output()
             output(
                 trim(
                     """
                 "Ah, but, I cannot share with you my secrets unless you can give me the
                 password. I swore an oath!".
+
                 His harsh demeanor drops slightly, as he looks at you with a glint of
                 hope in his eyes. He looks at you expectantly as he continues:
+
                 "You DO know the password, do you not? Tell me, what is it?".
                 """
                 )
@@ -309,12 +312,14 @@ class Man(Room):
                 self._oath.validate(key)
                 output(
                     "The smile returns. "
+
                     '"I knew it! Welcome, friend, let me share with you my secrets!".'
                 )
             except Exception:
                 return trim(
                     """
                     The man looks at you with great dissapointment in his eyes.
+
                     "No, no, no... That isn't it. Go away! Leave me be!"
                     """
                 )
@@ -325,6 +330,7 @@ class Man(Room):
             trim(
                 """
                 He pulls out an old tattered scroll and unravels it.
+
                 "Which secret shall I share?", he asks, as he extends a bony arm
                 toward you, beckoning you to read.
                 """
@@ -355,6 +361,7 @@ class Man(Room):
                     trim(
                         """
                         "What? I don't understand you. Speak up!"
+
                         The man looks at you, expectantly.
                         """
                     )
@@ -498,12 +505,18 @@ def main():
 
 
 TITLE = r"""
-     _         _   _                    _
-    / \  _   _| |_| |____   _____ _ __ | |_ _   _ _ __ ___
-   / _ \| | | | __| '_ \ \ / / _ \ '_ \| __| | | | '__/ _ \
-  / ___ \ |_| | |_| | | \ V /  __/ | | | |_| |_| | | |  __/
- /_/   \_\__,_|\__|_| |_|\_/ \___|_| |_|\__|\__,_|_|  \___|
-                                                 by Yubico
+                                                              _________
+     _         _   _                    _                    |    _    |
+    / \  _   _| |_| |____   _____ _ __ | |_ _   _ _ __ ___   |   ( )   |
+   / _ \| | | | __| '_ \ \ / / _ \ '_ \| __| | | | '__/ _ \  |    ¨    |
+  / ___ \ |_| | |_| | | \ V /  __/ | | | |_| |_| | | |  __/  |  .-·-.  |
+ /_/   \_\__,_|\__|_| |_|\_/ \___|_| |_|\__|\__,_|_|  \___|  | (  Y  ) |
+                                                 by Yubico   |  `·-·´  |
+                                                             |         |
+                                                             |_       _|
+                                                               | | | |
+                                                               | | | |
+                                                               `-----´
 """
 
 
