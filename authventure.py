@@ -161,7 +161,7 @@ class House(Room):
         else:
             super().look(what)
 
-    def to_drop(self, what):
+    def do_drop(self, what):
         if what in ("yubikey", "key"):
             if "yubikey" in self._state:
                 del self._state["yubikey"]
@@ -292,18 +292,16 @@ class Man(Room):
         if self._oath.locked:
             output()
             output(
-                trim(
-                    """
-                "Ah, but, I cannot share with you my secrets unless you can give me the
-                password. I swore an oath!".
-
-                His harsh demeanor drops slightly, as he looks at you with a glint of
-                hope in his eyes. He looks at you expectantly as he continues:
-
-                "You DO know the password, do you not? Tell me, what is it?".
-                """
-                )
+                '"Ah, but, I cannot share with you my secrets unless you can give me '
+                'the password. I swore an oath!".'
             )
+            output()
+            output(
+                "His harsh demeanor drops slightly, as he looks at you with a glint "
+                "of hope in his eyes. He looks at you expectantly as he continues:"
+            )
+            output()
+            output('"You DO know the password, do you not? Tell me, what is it?".')
 
             password = input("\n> ")
             output()
@@ -312,44 +310,36 @@ class Man(Room):
                 self._oath.validate(key)
                 output(
                     "The smile returns. "
-
                     '"I knew it! Welcome, friend, let me share with you my secrets!".'
                 )
             except Exception:
-                return trim(
-                    """
-                    The man looks at you with great dissapointment in his eyes.
-
-                    "No, no, no... That isn't it. Go away! Leave me be!"
-                    """
-                )
+                output("The man looks at you with great dissapointment in his eyes.")
+                return '"No, no, no... That isn\'t it. Go away! Leave me be!"'
 
         creds = {k.id: k for k in self._oath.calculate_all()}
 
+        output("He pulls out an old tattered scroll and unravels it.")
+        output()
         output(
-            trim(
-                """
-                He pulls out an old tattered scroll and unravels it.
-
-                "Which secret shall I share?", he asks, as he extends a bony arm
-                toward you, beckoning you to read.
-                """
-            )
+            '"Which secret shall I share?", he asks, as he extends a bony arm '
+            "toward you, beckoning you to read."
         )
         output()
 
         if not creds:
-            return trim(
-                """
-                You look at the scroll, but it is empty. The man notices your
-                confusion, and looks at the blank page himself.
-
-                "I... I don't understand. There are no secrets here. Surely you
-                must have secrets to keep?!?".
-
-                The man is noticably upset, and you deem it wise to not disturb
-                him further.
-                """
+            output(
+                "You look at the scroll, but it is empty. The man notices your "
+                "confusion, and looks at the blank page himself."
+            )
+            output()
+            output(
+                "\"I... I don't understand. There are no secrets here. Surely you must "
+                'have secrets to keep?!?".'
+            )
+            output()
+            return (
+                "The man is noticably upset, and you deem it wise to not disturb him "
+                "further."
             )
         else:
             for cred_id in creds:
@@ -357,15 +347,10 @@ class Man(Room):
 
             selected = input("\n> ").encode()
             while selected not in creds:
-                output(
-                    trim(
-                        """
-                        "What? I don't understand you. Speak up!"
-
-                        The man looks at you, expectantly.
-                        """
-                    )
-                )
+                output('"What? I don\'t understand you. Speak up!"')
+                output()
+                output("The man looks at you, expectantly.")
+                output()
                 selected = input("\n> ").encode()
 
             cred = creds[selected]
@@ -375,69 +360,63 @@ class Man(Room):
 
             if cred.touch_required:
                 output(
-                    trim(
-                        """
-                        In that case, there's just one more thing I must ask of you..."
-                        As he speaks he reaches into his pocket, grasping for something.
-                        As he pulls his hand back out you see a glimmer, something small
-                        and metallic is clenched in his fist.
-                        He slowly opens his hand for you to see a golden ring laying
-                        across his palm.
-
-                        "Are you ready?", he asks.
-                        """
-                    )
+                    '"In that case, there\'s just one more thing I must ask of you..."'
                 )
+                output(
+                    "As he speaks he reaches into his pocket, grasping for something."
+                )
+                output(
+                    "As he pulls his hand back out you see a glimmer, something small "
+                    "and metallic is clenched in his fist."
+                )
+                output(
+                    "He slowly opens his hand for you to see a golden ring laying "
+                    "across his palm."
+                )
+                output()
+                output('"Are you ready?", he asks.')
 
                 if input("\n> ").lower() in ("yes", "y"):
                     output()
                     output(
-                        trim(
-                            """
-                            Without a word, the golden ring starts to pulse with a
-                            bright green glow. You feel compelled to reach out and touch
-                            it with your fingers.
-                            """
-                        )
+                        "Without a word, the golden ring starts to pulse with a bright "
+                        "green glow."
+                    )
+                    output(
+                        "You feel compelled to reach out and touch it with your finger."
                     )
                     output()
 
                     try:
                         code = self._oath.calculate_code(cred)
                         output(
-                            trim(
-                                """
-                                As soon as you touch the gold ring it immediately stops
-                                pulsing. The man pulls it close to his eyes, as if
-                                struggling to read an inscription. Strange, you think to
-                                yourself, you could have sworn there was nothing there a
-                                moment ago.
-                                """
-                            )
+                            "As soon as you touch the gold ring it immediately stops "
+                            "pulsing. The man pulls it close to his eyes, as if "
+                            "struggling to read an inscription. Strange, you think to "
+                            "yourself, you could have sworn there was nothing there a "
+                            "moment ago."
                         )
                     except Exception:
-                        return trim(
-                            """
-                        The man looks at you disapprovingly.
-
-                        "Those who are to cowardly to act, will never amount to
-                        anything.", he mutters as he puts the ring back into his pocket.
-                        """
+                        output("The man looks at you disapprovingly.")
+                        output()
+                        return (
+                            '"Those who are to cowardly to act, will never amount to '
+                            'anything.", he mutters as he puts the ring back into his '
+                            "pocket."
                         )
                 else:
                     return "Then go away!"
             else:
                 output(
-                    trim(
-                        """
-                    The man reaches into his pocket, grasping for something.
-                    As he pulls his hand back out you see a glimmer, something small
-                    and metallic is clenched in his fist.
-                    He slowly opens his hand for you to see a golden ring laying
-                    across his palm. He holds the ring up close to his face, and
-                    squints, and you realize he is reading an inscription.
-                    """
-                    )
+                    "The man reaches into his pocket, grasping for something."
+                    "As he pulls his hand back out you see a glimmer, something small"
+                    "and metallic is clenched in his fist."
+                )
+                output()
+                output(
+                    "He slowly opens his hand for you to see a golden ring laying"
+                    "across his palm. He holds the ring up close to his face, and"
+                    "squints, and you realize he is reading an inscription."
                 )
                 code = self._oath.calculate_code(cred)
 
