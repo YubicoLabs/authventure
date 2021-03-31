@@ -360,14 +360,15 @@ class Man(Room):
 
             if cred.touch_required:
                 output(
-                    '"In that case, there\'s just one more thing I must ask of you..."'
+                    '"In that case, there\'s just one more thing I must ask of you..." '
                 )
+                output()
                 output(
-                    "As he speaks he reaches into his pocket, grasping for something."
+                    "As he speaks he reaches into his pocket, grasping for something. "
                 )
                 output(
                     "As he pulls his hand back out you see a glimmer, something small "
-                    "and metallic is clenched in his fist."
+                    "and metallic is clenched in his fist. "
                 )
                 output(
                     "He slowly opens his hand for you to see a golden ring laying "
@@ -380,7 +381,7 @@ class Man(Room):
                     output()
                     output(
                         "Without a word, the golden ring starts to pulse with a bright "
-                        "green glow."
+                        "green glow. "
                     )
                     output(
                         "You feel compelled to reach out and touch it with your finger."
