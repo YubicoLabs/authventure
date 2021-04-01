@@ -2,7 +2,7 @@
 
 Authventure is a brand new way to experience your YubiKey, brought to you by Yubico.
 
-For best results, we recommand https://github.com/Swordfish90/cool-retro-term
+For best results, we recommend https://github.com/Swordfish90/cool-retro-term
 
 
 ## Is this a joke?
