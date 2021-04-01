@@ -481,7 +481,14 @@ class Adventicature(cmd.Cmd):
 def main():
     print(TITLE)
     game = Adventicature()
-    game.cmdloop()
+    try:
+        game.cmdloop()
+    except Exception as e:
+        output("Suddenly and out of nowhere, a grue rushes in and eats you.")
+        output()
+        output("As the world begins to fade around you. You cling to a final thought:")
+        output(f"{e!r}")
+        sys.exit(1)
 
 
 TITLE = r"""
