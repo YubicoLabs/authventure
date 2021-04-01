@@ -1,7 +1,5 @@
 # Authventure by Yubico
 
-`VIDEO GOES HERE`
-
 Authventure is a brand new way to experience your YubiKey, brought to you by Yubico.
 
 For best results, we recommand https://github.com/Swordfish90/cool-retro-term
@@ -13,24 +11,24 @@ side-project we could work on together as a team, despite all working from
 home. We had a blast creating it, and we hope it brought some smiles to some
 faces. Now, we DID create a fully functional program which DOES allow you to
 extract TOTP codes from your YubiKey, just like in the video. You absolutely
-CAN use this to log in to services (though we also offer [other tools]:
-https://www.yubico.com/products/yubico-authenticator/ for that, if adventuring
-isn't your thing).
+CAN use this to log in to services (though we also offer [other
+tools](https://www.yubico.com/products/yubico-authenticator/) for that, if
+adventuring isn't your thing).
 
 
 ## Behind the scenes
 The `authventure.py` file in this repository contains the entire program, but
 all the heavy lifting (communicating with the YubiKey, implementation of the
-OATH TOTP protocol, etc.) is done by [yubikey-manager]
-https://github.com/Yubico/yubikey-manager. Besides providing a command line
-tool for configuring your YubiKey, it can also be used as a Python library for
-programatically interfacing with the various applications on a YubiKey. This
-allows you to write scripts to configure your YubiKey, or even full adventure
-games!
+OATH TOTP protocol, etc.) is done by
+[yubikey-manager](https://github.com/Yubico/yubikey-manager). Besides providing
+a command line tool for configuring your YubiKey, it can also be used as a
+Python library for programatically interfacing with the various applications on
+a YubiKey. This allows you to write scripts to configure your YubiKey, or even
+full adventure games!
 
 
 ## Prerequisites
-To use `authventure` you'll need [a YubiKey]:https://www.yubico.com/se/store/
+To use `authventure` you'll need [a YubiKey](https://www.yubico.com/store/)
 with OATH functionality, such as one of the YubiKey 5 models. You'll also need
 to have at least one OATH credential provisioned.
 
