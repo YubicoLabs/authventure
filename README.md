@@ -1,5 +1,7 @@
 # Authventure by Yubico
 
+[![](http://img.youtube.com/vi/gx-3BTxjMCk/0.jpg)](http://www.youtube.com/watch?v=gx-3BTxjMCk "Authventure")
+
 Authventure is a brand new way to experience your YubiKey, brought to you by Yubico.
 
 For best results, we recommend https://github.com/Swordfish90/cool-retro-term
